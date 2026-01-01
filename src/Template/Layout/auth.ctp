@@ -15,7 +15,7 @@
 
     <?= $this->Assets->favicon() ?>
 
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
     <?php
@@ -45,28 +45,36 @@
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page modern-auth-page">
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="<?php echo $this->Url->build('/'); ?>"><?= get_logo_alt()['content'] ?></a>
+<div class="auth-wrapper">
+    <div class="auth-background">
+        <div class="auth-gradient"></div>
     </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <?= $this->Flash->render() ?>
+    <div class="auth-container">
+        <div class="login-box modern-login-box">
+            <div class="login-logo">
+                <a href="<?php echo $this->Url->build('/'); ?>"><?= get_logo_alt()['content'] ?></a>
+            </div>
+            <!-- /.login-logo -->
+            <div class="login-box-body modern-login-body">
+                <?= $this->Flash->render() ?>
 
-        <?= $this->fetch('content') ?>
+                <?= $this->fetch('content') ?>
 
+            </div>
+            <!-- /.login-box-body -->
+        </div>
+        <!-- /.login-box -->
+
+        <footer class="auth-footer">
+            <div class="container text-center">
+                <p class="auth-copyright"><?= h(get_option('copyright', '')); ?></p>
+                <p class="auth-copyright"><?= __('Copyright &copy;') ?> <?= date("Y") ?> <?= h(get_option('site_name')) ?>. <?= __('All rights reserved.') ?></p>
+            </div>
+        </footer>
     </div>
-    <!-- /.login-box-body -->
 </div>
-<!-- /.login-box -->
-
-<footer>
-    <div class="container text-center">
-        <?= h(get_option('copyright', '')); ?>
-    </div>
-</footer>
 
 <?= $this->element('js_vars'); ?>
 

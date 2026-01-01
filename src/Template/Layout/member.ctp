@@ -16,7 +16,7 @@
 
     <?= $this->Assets->favicon() ?>
 
-    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
     <?php
@@ -47,14 +47,14 @@
     <![endif]-->
 </head>
 <body class="member-dashboard hold-transition <?= get_option('member_adminlte_theme_skin',
-    'skin-blue') ?> sidebar-mini">
-<div class="wrapper">
+    'skin-blue') ?> sidebar-mini modern-dashboard">
+<div class="wrapper modern-wrapper">
 
     <!-- Main Header -->
-    <header class="main-header">
+    <header class="main-header modern-header">
 
         <!-- Logo -->
-        <a href="<?= $this->Url->build('/'); ?>" class="logo">
+        <a href="<?= $this->Url->build('/'); ?>" class="logo modern-logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini">
                 <?= preg_replace('/(\B.|\s+)/', '', get_option('site_name')) ?>
@@ -64,13 +64,16 @@
         </a>
 
         <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
+        <nav class="navbar navbar-static-top modern-navbar" role="navigation">
             <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a href="#" class="sidebar-toggle modern-sidebar-toggle" data-toggle="offcanvas" role="button" aria-label="<?= __('Toggle navigation') ?>">
                 <span class="sr-only"><?= __('Toggle navigation') ?></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </a>
             <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
+            <div class="navbar-custom-menu modern-navbar-menu">
                 <ul class="nav navbar-nav">
 
                     <?php if (in_array($logged_user->role, ['admin'])) : ?>
@@ -165,15 +168,16 @@
 
 
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar modern-sidebar">
 
         <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
+        <section class="sidebar modern-sidebar-content">
 
             <br>
 
-            <button type="button" class="btn btn-block btn-social btn-github btn-lg shorten-button" data-toggle="modal"
-                    data-target="#myModal"><i class="fa fa-paper-plane"></i> <span><?= __("New Shorten Link") ?></span>
+            <button type="button" class="btn btn-block btn-primary btn-lg shorten-button modern-shorten-btn" data-toggle="modal"
+                    data-target="#myModal">
+                <i class="fa fa-plus-circle"></i> <span><?= __("New Shorten Link") ?></span>
             </button>
 
             <br>
@@ -385,18 +389,18 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper modern-content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1><?= h($this->fetch('content_title')); ?></h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> <?= __('Dashboard') ?></a></li>
+        <section class="content-header modern-content-header">
+            <h1 class="modern-page-title"><?= h($this->fetch('content_title')); ?></h1>
+            <ol class="breadcrumb modern-breadcrumb">
+                <li><a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'dashboard']); ?>"><i class="fa fa-dashboard"></i> <?= __('Dashboard') ?></a></li>
                 <li class="active"><?= h($this->fetch('content_title')); ?></li>
             </ol>
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content modern-content">
 
             <div class="box-short" style="margin-bottom: 10px; display: none;">
                 <div class="box box-success box-solid shorten-member">
@@ -423,13 +427,16 @@
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-
+    <footer class="main-footer modern-dashboard-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="footer-text">
+                        <?= __('Copyright &copy;') ?> <?= date("Y") ?> <?= h(get_option('site_name')) ?>. <?= __('All rights reserved.') ?>
+                    </p>
+                </div>
+            </div>
         </div>
-        <!-- Default to the left -->
-        <?= __('Copyright &copy;') ?> <?= h(get_option('site_name')) ?> <?= date("Y") ?>
     </footer>
 
     <!-- Add the sidebar's background. This div must be placed

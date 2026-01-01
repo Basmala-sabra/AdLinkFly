@@ -21,7 +21,7 @@
     <?= $this->Assets->css('/vendor/font-awesome/css/font-awesome.min.css?ver=' . APP_VERSION); ?>
     <?= $this->Assets->css('/vendor/animate.min.css?ver=' . APP_VERSION); ?>
 
-    <link href="//fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i%7CMontserrat:400,700%7CRoboto+Slab:100,300,400,700"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
     <?= $this->Assets->css('front.css?ver=' . APP_VERSION); ?>
@@ -50,12 +50,12 @@
 <body id="page-top" class="index <?= ($this->request->getParam('_name') === 'home') ? 'home' : 'inner-page' ?>">
 <?= get_option('after_body_tag_code'); ?>
 <!-- Navigation -->
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top modern-nav">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only"><?= __('Toggle navigation') ?></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -90,30 +90,45 @@
 <?= $this->Flash->render() ?>
 <?= $this->fetch('content') ?>
 
-<footer>
+<footer class="modern-footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <span class="copyright"><?= __('Copyright &copy;') ?> <?= h(get_option('site_name')) ?> <?= date("Y") ?></span>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline social-buttons">
+            <div class="col-md-4 col-sm-12 footer-section">
+                <h5 class="footer-title"><?= h(get_option('site_name')) ?></h5>
+                <p class="footer-description"><?= __('Shorten URLs and earn money with our professional link shortener platform.') ?></p>
+                <div class="social-links">
                     <?php if (get_option('facebook_url')) : ?>
-                        <li><a href="<?= h(get_option('facebook_url')) ?>"><i class="fa fa-facebook"></i></a></li>
+                        <a href="<?= h(get_option('facebook_url')) ?>" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
                     <?php endif; ?>
                     <?php if (get_option('twitter_url')) : ?>
-                        <li><a href="<?= h(get_option('twitter_url')) ?>"><i class="fa fa-twitter"></i></a></li>
+                        <a href="<?= h(get_option('twitter_url')) ?>" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
                     <?php endif; ?>
-                </ul>
+                </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6 footer-section">
+                <h5 class="footer-title"><?= __('Quick Links') ?></h5>
                 <?=
                 menu_display('menu_footer', [
-                    'ul_class' => 'list-inline quicklinks',
+                    'ul_class' => 'footer-links',
                     'li_class' => '',
                     'a_class' => '',
                 ]);
                 ?>
+            </div>
+            <div class="col-md-4 col-sm-6 footer-section">
+                <h5 class="footer-title"><?= __('Contact') ?></h5>
+                <p class="footer-info"><?= __('Need help? Contact our support team.') ?></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-bottom">
+                    <p class="copyright"><?= __('Copyright &copy;') ?> <?= date("Y") ?> <?= h(get_option('site_name')) ?>. <?= __('All rights reserved.') ?></p>
+                </div>
             </div>
         </div>
     </div>
